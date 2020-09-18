@@ -1,0 +1,64 @@
+<template>
+    <lightning-layout multiple-rows>
+        <lightning-layout-item size="12" padding="around-small">
+            <lightning-input
+                label="Title"
+                value={pvtTitle}
+                placeholder="Event title"
+                required
+                onchange={titleChangeHandler}
+            ></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input
+                type="datetime"
+                name="input1"
+                label="Start Time"
+                value={pvtStartTime}
+                timezone="Asia/Kolkata"
+                required
+                onchange={startTimeChangeHandler}
+            ></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+            <lightning-input
+                type="datetime"
+                name="input1"
+                label="End Time"
+                value={pvtEndTime}
+                timezone="Asia/Kolkata"
+                required
+                onchange={endTimeChangeHandler}
+            ></lightning-input>
+        </lightning-layout-item>
+    </lightning-layout>
+    <div class="slds-border_top slds-var-m-vertical_small slds-var-p-vertical_small">
+        <div class="slds-float_right">
+            <template if:true={showCreate}>
+                <lightning-button
+                    class="slds-var-m-horizontal_small"
+                    variant="brand"
+                    label="Create"
+                    onclick={createHandler}
+                ></lightning-button>
+            </template>
+            <template if:true={showUpdate}>
+                <lightning-button
+                    class="slds-var-m-horizontal_small"
+                    variant="brand"
+                    label="Update"
+                    onclick={updateHandler}
+                ></lightning-button>
+            </template>
+            <template if:true={showDelete}>
+                <lightning-button
+                    class="slds-var-m-horizontal_small"
+                    variant="destructive"
+                    label="Delete"
+                    onclick={deleteHandler}
+                ></lightning-button>
+            </template>
+            <lightning-button class="slds-var-m-horizontal_small" label="Cancel" onclick={cancelHandler}></lightning-button>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,64 @@
+<template>
+    <div class="calendar-panel">
+        <template if:true={isLoading}>
+            <c-spinner help-text="Loading calendar..."></c-spinner>
+        </template>
+        <template if:false={isLoading}>
+            <!--USER DOES NOT HAVE ACCESS TO CALENDAR-->
+            <template if:false={hasAccess}>
+                <div class="error-panel slds-align_absolute-center">
+                    <lightning-layout multiple-rows>
+                        <lightning-layout-item size="12">
+                            <div class="slds-align_absolute-center">
+                                <div class="slds-text-heading_medium slds-var-m-right_medium">
+                                    YOU DO NOT HAVE ACCESS TO PHYSICIAN'S CALENDAR.
+                                </div>
+                                <lightning-button label="Request Access" onclick={requestAccessHandler}></lightning-button>
+                            </div>
+                        </lightning-layout-item>
+                        <lightning-layout-item size="12" padding="around-medium">
+                            <div class="slds-align_absolute-center">
+                                <lightning-button
+                                    label="Book Appointment"
+                                    variant="brand"
+                                    icon-name="utility:add"
+                                    icon-position="left"
+                                    onclick={bookAppointmentHandler}
+                                ></lightning-button>
+                            </div>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </div>
+            </template>
+            <!--SHOW CALENDAR-->
+            <template if:true={hasAccess}>
+                <c-google-calendar
+                    calendar-events={calendarEvents}
+                    oncalendarclick={calendarClickHandler}
+                    oneventupdate={calendarEventUpdateHandler}
+                    oneventdrag={calendarEventDragHandler}
+                ></c-google-calendar>
+            </template>
+        </template>
+    </div>
+
+    <!--Appointment form-->
+    <template if:true={isModalOpen}>
+        <c-overlay-modal modal-title={modalTitle} onclose={closeEventForm} hide-success-button hide-cancel-button>
+            <c-mc-event-form
+                slot="body"
+                title={calendarEvent.title}
+                start-time={calendarEvent.startTime}
+                end-time={calendarEvent.endTime}
+                event-id={calendarEvent.id}
+                show-update={showUpdateButton}
+                show-delete={showDeletebutton}
+                show-create={showCreateButton}
+                oncreate={eventCreateHandler}
+                onupdate={eventUpdateHandler}
+                ondelete={eventDeleteHandler}
+                oncancel={closeEventForm}
+            ></c-mc-event-form>
+        </c-overlay-modal>
+    </template>
+</template>

@@ -1,0 +1,36 @@
+<template>
+    <lightning-layout multiple-rows>
+        <lightning-layout-item size="12" padding="around-medium">
+            <div onkeyup={patientSearchHandler}>
+                <lightning-input
+                    name="enter-search"
+                    placeholder="Search patient by name/mobile/email"
+                    label="Hit enter to search"
+                    type="search"
+                ></lightning-input>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="around-medium">
+            <template if:true={hasPatients}>
+                <div class="patient-list">
+                    <div style="height: 400px">
+                        <lightning-datatable
+                            key-field="Id"
+                            data={patients}
+                            columns={columns}
+                            max-row-selection="1"
+                            onrowselection={patientSelectHandler}
+                        >
+                        </lightning-datatable>
+                    </div>
+                </div>
+            </template>
+            <template if:false={hasPatients}>
+                <div class="slds-text-heading_large">No patient record found.</div>
+            </template>
+        </lightning-layout-item>
+    </lightning-layout>
+    <template if:true={error}>
+        <c-error-panel errors={error}></c-error-panel>
+    </template>
+</template>

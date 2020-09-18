@@ -1,0 +1,14 @@
+<template>
+    <lightning-layout>
+        <lightning-layout-item size="6" padding="around-medium">
+            <template if:true={physicianChartConfig}>
+                <c-chart chart-config={physicianChartConfig}></c-chart>
+            </template>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-medium">
+            <template if:true={specializationChartConfig}>
+                <c-chart chart-config={specializationChartConfig}></c-chart>
+            </template>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

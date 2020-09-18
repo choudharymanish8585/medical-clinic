@@ -1,0 +1,34 @@
+<template>
+    <div class="mc-main-page">
+        <div class="vertical">
+            <!--FILTER HEADER PANEL-->
+            <div class="nav-bar">
+                <!--LEFT PANEL VIEW-->
+                <c-mc-left-panel
+                    views={views}
+                    selected-view={selectedView}
+                    clinic-name={clinicInfo.name}
+                    clinic-id={clinicInfo.id}
+                    onviewchange={viewChangeHandler}
+                    onpatientselect={patientSelectHandler}
+                    onphysicianselect={physicianSelectHandler}
+                ></c-mc-left-panel>
+            </div>
+            <!--DASHBOARD VIEW / MAIN PAGE VIEW-->
+            <div class="main-view">
+                <!--APPOINTMENT VIEW-->
+                <template if:true={isAppointmentView}>
+                    <c-mc-appointment-page
+                        patient-id={selectedPatientId}
+                        physician-id={selectedPhysicianId}
+                        onviewchange={viewChangeHandler}
+                    ></c-mc-appointment-page>
+                </template>
+                <!--DASHBOARD VIEW-->
+                <template if:true={isDashboardView}>
+                    <c-mc-dashboard-page></c-mc-dashboard-page>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

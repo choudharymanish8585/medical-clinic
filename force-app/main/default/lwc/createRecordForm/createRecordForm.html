@@ -1,0 +1,25 @@
+<template>
+    <template if:true={showFields}>
+        <lightning-record-form
+            object-api-name={objectApiName}
+            density={density}
+            fields={fields}
+            columns="2"
+            onsuccess={handleSuccess}
+            oncancel={handleCancel}
+        >
+        </lightning-record-form>
+    </template>
+
+    <template if:false={showFields}>
+        <lightning-record-form
+            object-api-name={objectApiName}
+            layout-type={layoutType}
+            density={density}
+            columns="2"
+            onsuccess={handleSuccess}
+            oncancel={handleCancel}
+        >
+        </lightning-record-form>
+    </template>
+</template>

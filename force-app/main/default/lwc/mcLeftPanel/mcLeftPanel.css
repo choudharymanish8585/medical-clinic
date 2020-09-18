@@ -1,0 +1,11 @@
+.vb-actions {
+    background-color: rgb(22, 50, 92);
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}

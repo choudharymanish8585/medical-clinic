@@ -1,0 +1,47 @@
+<template>
+    <template if:true={physician.data}>
+        <div class="slds-page-header slds-page-header_record-home physician-panel">
+            <div class="slds-page-header__row">
+                <div class="slds-page-header__col-title">
+                    <div class="slds-media">
+                        <lightning-icon icon-name="utility:note" size="large"></lightning-icon>
+                        <div class="slds-media__body slds-var-p-left_large">
+                            <div class="slds-page-header__name">
+                                <div class="slds-page-header__name-title">
+                                    <h1>
+                                        <span class="slds-text-heading_large">Physician</span>
+                                        <span class="slds-page-header__title slds-truncate" title={name}>{name}</span>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-page-header__row slds-page-header__row_gutters">
+                <div class="slds-page-header__col-details">
+                    <ul class="slds-page-header__detail-row slds-grid_align-spread">
+                        <li>
+                            <div class="slds-text-title slds-truncate" title="Email">Email</div>
+                            <div class="slds-truncate" title={email}>{email}</div>
+                        </li>
+                        <li>
+                            <div class="slds-text-title slds-truncate" title="Phone">Phone</div>
+                            <div class="slds-truncate" title={phone}>{phone}</div>
+                        </li>
+                        <li>
+                            <div class="slds-text-title slds-truncate" title="Specialization">Specialization</div>
+                            <div class="slds-truncate" title={specialization}>{specialization}</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <template if:true={showPricePanel}>
+            <div class="price-panel slds-page-header slds-text-heading_large slds-var-m-vertical_large slds-var-p-around_medium">
+                Appointment Price: {price}
+            </div>
+        </template>
+    </template>
+</template>

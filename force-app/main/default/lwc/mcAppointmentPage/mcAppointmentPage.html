@@ -1,0 +1,34 @@
+<template>
+    <lightning-layout multiple-rows>
+        <lightning-layout-item size="4" padding="around-small">
+            <lightning-layout multiple-rows>
+                <template if:true={patientId}>
+                    <lightning-layout-item size="12" padding="around-small">
+                        <c-mc-patient-panel patient-id={patientId}></c-mc-patient-panel>
+                    </lightning-layout-item>
+                </template>
+                <template if:true={physicianId}>
+                    <lightning-layout-item size="12" padding="around-small">
+                        <c-mc-physician-panel physician-id={physicianId} show-price-panel></c-mc-physician-panel>
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>
+
+            <template if:true={invalidForm}>
+                <div class="form-message slds-align_absolute-center slds-text-body_regular slds-var-p-around_small">
+                    <lightning-icon icon-name="utility:info_alt" size="small" class="slds-var-p-right_medium"></lightning-icon>
+                    {message}
+                </div>
+            </template>
+        </lightning-layout-item>
+        <template if:true={physicianId}>
+            <lightning-layout-item size="8" padding="around-small">
+                <c-mc-physician-calendar
+                    physician-id={physicianId}
+                    patient-id={patientId}
+                    onviewchange={changeViewHandler}
+                ></c-mc-physician-calendar>
+            </lightning-layout-item>
+        </template>
+    </lightning-layout>
+</template>

@@ -1,0 +1,6 @@
+<template>
+    <div class="cspinner">
+        <lightning-spinner alternative-text={altText} size={size} variant={variant} title={title}></lightning-spinner>
+    </div>
+    <div if:true={showHelpText} class="cspinner-help-text slds-align_absolute-center">{helpText}</div>
+</template>

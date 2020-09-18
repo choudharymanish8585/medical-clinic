@@ -1,0 +1,40 @@
+.mc-main-page {
+    margin: -12px;
+    height: 100%;
+}
+
+.vertical {
+    display: flex;
+    flex-flow: row;
+    height: 100%;
+}
+
+.vertical .nav-bar {
+    width: 250px;
+    border-right: #92979c solid 1px;
+    flex: 0 0 auto;
+    overflow-y: auto;
+    background: whitesmoke;
+}
+
+.vertical .main-view {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    background: white;
+    padding: 1rem;
+}
+
+.vertical .container {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    background: white;
+    padding: 1rem;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
